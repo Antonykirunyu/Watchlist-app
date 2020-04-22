@@ -8,10 +8,13 @@
         <title> Welcome to the best Movie Review website </title>
         {% endif %}
     </head>
+    {% import 'macros.html' as macro%}
     <body>
   <!-- Popular movie -->
   <h3> Popular Movies</h3>
   <ul>
+    {{ macro.displayMovieList(popular)}}
+
      {% for popular_movie in popular %}
          <li>{{ popular_movie.title}}</li>
      {% endfor %}
@@ -20,6 +23,8 @@
  <!-- Upcoming movie  -->
  <h3> Upcoming Movies </h3>
   <ul>
+    {{ macro.displayMovieList(upcoming)}}
+
      {% for upcoming_movie in upcoming %}
          <li>{{ upcoming_movie.title}}</li>
      {% endfor %}
@@ -27,6 +32,8 @@
  <!-- Now showing movie -->
  <h3>Now Showing</h3>
   <ul>
+    {{ macro.displayMovieList(now_showing)}}
+
      {% for now_showing_movie in now_showing %}
          <li>{{ now_showing_movie.title}}</li>
      {% endfor %}
