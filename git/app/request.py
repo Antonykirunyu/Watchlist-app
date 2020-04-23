@@ -1,10 +1,13 @@
 from app import app
 import urllib.request,json
 from .models import movie
+import urllib.request, json
+from .models import Movie
 
 Movie = movie.Movie
 
 # Getting api key
+global api_key,base_url
 api_key = app.config['MOVIE_API_KEY']
 
 # Getting the movie base url
@@ -27,3 +30,14 @@ def get_movie(id):
             vote_count = movie_details_response.get('vote_count')
             movie_object = Movie(id,title,overview,poster,vote_average,vote_count)
     return movie_object
+
+
+# Getting api key
+api_key = None
+# Getting the movie base url
+base_url = None
+
+def configure_request (app):
+        global api_key,base_url
+    api_key = app.config['MOVIE_API_KEY']
+    base_url = app.config['MOVIE_API_BASE_URL']
